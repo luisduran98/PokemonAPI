@@ -4,15 +4,15 @@ module.exports = (bdPokemon)=>{
 
     bdPokemon.define("type",{
         id:{
-            type: DataTypes.UUID,
-            defaultValue: DataTypes.UUIDV4,
+            type: DataTypes.INTEGER,
             primaryKey: true,
-            
+            autoIncrement: true,
         },
         nombre:{
             type: DataTypes.STRING,
             allowNull: false,
-        }
-    })
+        },
+        
+    },{"timestamps": false })
 }
 

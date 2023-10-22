@@ -10,10 +10,11 @@ dbPokemon.define("pokemons",{
     nombre:{
         type: DataTypes.STRING,
         allowNull: false,
+        unique: true,
     },
     imagen:{
         type: DataTypes.STRING,
-        allowNull: false,},
+        },
     vida:{
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -26,5 +27,6 @@ dbPokemon.define("pokemons",{
         type: DataTypes.INTEGER,
         allowNull: false,
     },
-})
+},{"timestamps": false })
 }
+
