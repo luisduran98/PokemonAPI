@@ -6,6 +6,8 @@ const getPokemonsName = async(req,res)=>{
         const { nombre } = req.query;
     
         try {
+
+        if(!nombre){return res.status(404).json({error: "coloca el personaje"})}
         
             const dbPokemons = await pokemons.findAll({
                 where:{
@@ -20,7 +22,7 @@ const getPokemonsName = async(req,res)=>{
                   }
                 
             });
-
+            
             const pokemonDBM = dbPokemons.map(pokemon => ({
               id: pokemon.id,
               nombre: pokemon.nombre,
@@ -30,9 +32,9 @@ const getPokemonsName = async(req,res)=>{
               defensa: pokemon.defensa,
               tipo: pokemon.types.map(type => type.nombre),
           }));
-
+          
             if(pokemonDBM.length > 0){
-            return res.status(200).json(pokemonDBM)
+            return res.status(200).json(pokemonDBM[0])
         }else{
 
             const apiResponse = await axios.get(`https://pokeapi.co/api/v2/pokemon/${nombre.toLowerCase()}`);
